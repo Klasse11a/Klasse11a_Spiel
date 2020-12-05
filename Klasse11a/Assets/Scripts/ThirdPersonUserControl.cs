@@ -10,12 +10,13 @@ using UnityEngine;
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
-    private InputManager inputManager;
+        private InputManager inputManager;        // reference to InputManager to use input
 
 
         private void Start()
         {
-        inputManager = InputManager.Instance;
+            // gets the InputManager
+            inputManager = InputManager.Instance;
 
             // get the transform of the main camera
             if (Camera.main != null)
@@ -48,8 +49,6 @@ using UnityEngine;
         {
             // read inputs
             Vector2 move = inputManager.GetPlayerMovement();
-                //float h = CrossPlatformInputManager.GetAxis("Horizontal");
-                //float v = CrossPlatformInputManager.GetAxis("Vertical");
             bool crouch = inputManager.GetPlayerCrouch;
 
             // calculate move direction to pass to character
