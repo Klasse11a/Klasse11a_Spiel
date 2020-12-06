@@ -63,10 +63,10 @@ using UnityEngine;
                 //we use world - relative directions in the case of no main camera
                 m_Move = move.y * Vector3.forward + move.x * Vector3.right;
             }
-#if !MOBILE_INPUT
+
             // walk speed multiplier
             if (inputManager.GetPlayerSneak) m_Move *= 0.5f;
-#endif
+
 
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump);

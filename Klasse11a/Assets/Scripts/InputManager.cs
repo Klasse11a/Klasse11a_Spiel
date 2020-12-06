@@ -5,8 +5,9 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public GameObject MobileInput;
-
+    [HideInInspector]
     public bool GetPlayerSneak; // activates sneak
+    [HideInInspector]
     public bool GetPlayerCrouch; // activates crouch
 
 
@@ -14,6 +15,7 @@ public class InputManager : MonoBehaviour
 
     private static InputManager _instance;
 
+    #region initialising InputManager
     public static InputManager Instance
     {
         get
@@ -53,7 +55,9 @@ public class InputManager : MonoBehaviour
     {
         inputActions.Disable();
     }
+    #endregion
 
+    #region read Input
     // return player movement 
     public Vector2 GetPlayerMovement()
     {
@@ -80,6 +84,6 @@ public class InputManager : MonoBehaviour
         // get if button up
         inputActions.Player.Crouch.canceled += _ => GetPlayerCrouch = false;
     }
-
+    #endregion
 
 }
