@@ -70,6 +70,12 @@ public class InputManager : MonoBehaviour
         return inputActions.Player.Jump.triggered;
     }
 
+    //return if button pressed
+    public bool GetOpenMenu()
+    {
+        return inputActions.UI.OpenMenu.triggered;
+    }
+
     private void Update()
     {
         // sets sneak ture or false
