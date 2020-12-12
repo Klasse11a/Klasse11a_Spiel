@@ -15,7 +15,8 @@ public class InputManager : MonoBehaviour
 
     private static InputManager _instance;
 
-    #region initialising InputManager
+    #region initialising InputManager and checking button hold down
+
     public static InputManager Instance
     {
         get
@@ -45,6 +46,18 @@ public class InputManager : MonoBehaviour
         {
             MobileInput.SetActive(true);
         }
+
+        // sets sneak ture or false
+        // get if button down
+        inputActions.Player.Sneak.performed += _ => GetPlayerSneak = true;
+        // get if button up
+        inputActions.Player.Sneak.canceled += _ => GetPlayerSneak = false;
+
+        // sets crouch true or false
+        // get if button down
+        inputActions.Player.Crouch.performed += _ => GetPlayerCrouch = true;
+        // get if button up
+        inputActions.Player.Crouch.canceled += _ => GetPlayerCrouch = false;
     }
 
     private void OnEnable()
@@ -76,19 +89,14 @@ public class InputManager : MonoBehaviour
         return inputActions.UI.OpenMenu.triggered;
     }
 
+    public bool GetPlayerInteracte()
+    {
+        return inputActions.Player.Interacte.triggered;
+    }
+
     private void Update()
     {
-        // sets sneak ture or false
-        // get if button down
-        inputActions.Player.Sneak.performed += _ => GetPlayerSneak = true;
-        // get if button up
-        inputActions.Player.Sneak.canceled += _ => GetPlayerSneak = false;
-
-        // sets crouch true or false
-        // get if button down
-        inputActions.Player.Crouch.performed += _ => GetPlayerCrouch = true;
-        // get if button up
-        inputActions.Player.Crouch.canceled += _ => GetPlayerCrouch = false;
+        
     }
     #endregion
 

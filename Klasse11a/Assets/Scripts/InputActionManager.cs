@@ -57,6 +57,14 @@ public class @InputActionManager : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interacte"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3edbff6-cb95-45cb-94ff-165f5bc4b351"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -222,6 +230,28 @@ public class @InputActionManager : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MouseDelta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14c18ac5-11e5-450f-b8e6-24962d5c2c73"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interacte"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf6e08a8-7dd4-4c59-bf8e-1d6b0d277dec"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interacte"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -773,6 +803,7 @@ public class @InputActionManager : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Sneak = m_Player.FindAction("Sneak", throwIfNotFound: true);
         m_Player_MouseDelta = m_Player.FindAction("MouseDelta", throwIfNotFound: true);
+        m_Player_Interacte = m_Player.FindAction("Interacte", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -840,6 +871,7 @@ public class @InputActionManager : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Sneak;
     private readonly InputAction m_Player_MouseDelta;
+    private readonly InputAction m_Player_Interacte;
     public struct PlayerActions
     {
         private @InputActionManager m_Wrapper;
@@ -849,6 +881,7 @@ public class @InputActionManager : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Sneak => m_Wrapper.m_Player_Sneak;
         public InputAction @MouseDelta => m_Wrapper.m_Player_MouseDelta;
+        public InputAction @Interacte => m_Wrapper.m_Player_Interacte;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -873,6 +906,9 @@ public class @InputActionManager : IInputActionCollection, IDisposable
                 @MouseDelta.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseDelta;
                 @MouseDelta.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseDelta;
                 @MouseDelta.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseDelta;
+                @Interacte.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteracte;
+                @Interacte.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteracte;
+                @Interacte.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteracte;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -892,6 +928,9 @@ public class @InputActionManager : IInputActionCollection, IDisposable
                 @MouseDelta.started += instance.OnMouseDelta;
                 @MouseDelta.performed += instance.OnMouseDelta;
                 @MouseDelta.canceled += instance.OnMouseDelta;
+                @Interacte.started += instance.OnInteracte;
+                @Interacte.performed += instance.OnInteracte;
+                @Interacte.canceled += instance.OnInteracte;
             }
         }
     }
@@ -1016,6 +1055,7 @@ public class @InputActionManager : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnSneak(InputAction.CallbackContext context);
         void OnMouseDelta(InputAction.CallbackContext context);
+        void OnInteracte(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
