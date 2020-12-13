@@ -5,7 +5,7 @@ using UnityEngine;
 public class Interacte : MonoBehaviour
 {
     [SerializeField]
-    private GameObject interactPanal;  // refers to the panal of th eINteraction Canvas
+    private GameObject interactPanal;  // refers to the panal of the Interaction Canvas
     [SerializeField]
     private GameObject vcam;    // refers to the camera that should be activated
     [SerializeField]
