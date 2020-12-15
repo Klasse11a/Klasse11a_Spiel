@@ -5,7 +5,11 @@ using UnityEngine;
 public class Interacte : MonoBehaviour
 {
     [SerializeField]
+<<<<<<< HEAD:Klasse11a/Assets/Interacte.cs
     private GameObject interactPanal;  // refers to the panal of th eINteraction Canvas
+=======
+    private GameObject interactPanal;  // refers to the panal of the Interaction Canvas
+>>>>>>> parent of cd1d9f0... finishing mobile interaction:Klasse11a/Assets/Scripts/Interacte.cs
     [SerializeField]
     private GameObject vcam;    // refers to the camera that should be activated
     [SerializeField]
