@@ -7,8 +7,6 @@ public class Interacte : MonoBehaviour
     [SerializeField]
     private GameObject interactPanal;  // refers to the panal of the Interaction Canvas
     [SerializeField]
-    private GameObject interactPanalMobile; // refers to the Mobile panal of the Interaction Canvas
-    [SerializeField]
     private GameObject vcam;    // refers to the camera that should be activated
     [SerializeField]
     private GameObject Player; // refers to the player
@@ -46,21 +44,13 @@ public class Interacte : MonoBehaviour
         }
     } 
 
-    // checks if player walks in to trigger area near the game object 
+    // checks if player walks in to trigger are near the game object 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            if (SystemInfo.deviceType.Equals(DeviceType.Handheld))
-            {
-                interactPanalMobile.SetActive(true);
-                interactionPanalIsActive = true;
-            }
-            else
-            {
-                interactPanal.SetActive(true);
-                interactionPanalIsActive = true;
-            }
+            interactPanal.SetActive(true);
+            interactionPanalIsActive = true;
         }
     }
 
@@ -69,16 +59,8 @@ public class Interacte : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            if (SystemInfo.deviceType.Equals(DeviceType.Handheld))
-            {
-                interactPanalMobile.SetActive(false);
-                interactionPanalIsActive = false;
-            }
-            else
-            {
-                interactPanal.SetActive(false);
-                interactionPanalIsActive = false;
-            }
+            interactPanal.SetActive(false);
+            interactionPanalIsActive = false;
         }
     }
 }
