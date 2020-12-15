@@ -5,7 +5,9 @@ using UnityEngine;
 public class Interacte : MonoBehaviour
 {
     [SerializeField]
-    private GameObject interactPanal;  // refers to the panal of the Interaction Canvas
+    private GameObject interactPanal;  // refers to the desktop panal of the Interaction Canvas
+    [SerializeField]
+    private GameObject interactePanalMobile; // refers to the Mobile panal of the Interaction Canvas
     [SerializeField]
     private GameObject vcam;    // refers to the camera that should be activated
     [SerializeField]
@@ -49,8 +51,17 @@ public class Interacte : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            interactPanal.SetActive(true);
-            interactionPanalIsActive = true;
+            if (SystemInfo.deviceType.Equals(DeviceType.Handheld))
+            {
+                interactePanalMobile.SetActive(true);
+                interactionPanalIsActive = true;
+            }
+            else
+            {
+                interactPanal.SetActive(true);
+                interactionPanalIsActive = true;
+            }
+            
         }
     }
 
@@ -59,8 +70,16 @@ public class Interacte : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            interactPanal.SetActive(false);
-            interactionPanalIsActive = false;
+            if (SystemInfo.deviceType.Equals(DeviceType.Handheld))
+            {
+                interactePanalMobile.SetActive(false);
+                interactionPanalIsActive = false;
+            }
+            else
+            {
+                interactPanal.SetActive(false);
+                interactionPanalIsActive = false;
+            }
         }
     }
 }
