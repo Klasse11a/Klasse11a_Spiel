@@ -9,6 +9,8 @@ public class Interacte : MonoBehaviour
     [SerializeField]
     private GameObject interactePanalMobile; // refers to the Mobile panal of the Interaction Canvas
     [SerializeField]
+    private GameObject nextOnMobile; 
+    [SerializeField]
     private GameObject vcam;    // refers to the camera that should be activated
     [SerializeField]
     private GameObject Player; // refers to the player
@@ -53,6 +55,7 @@ public class Interacte : MonoBehaviour
         {
             if (SystemInfo.deviceType.Equals(DeviceType.Handheld))
             {
+                nextOnMobile.SetActive(true);
                 interactePanalMobile.SetActive(true);
                 interactionPanalIsActive = true;
             }
@@ -72,6 +75,7 @@ public class Interacte : MonoBehaviour
         {
             if (SystemInfo.deviceType.Equals(DeviceType.Handheld))
             {
+                nextOnMobile.SetActive(false);
                 interactePanalMobile.SetActive(false);
                 interactionPanalIsActive = false;
             }
