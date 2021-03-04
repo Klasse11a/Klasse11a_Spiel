@@ -8,25 +8,36 @@ public class TextTest : MonoBehaviour
     private InputManager inputManager;
 
     [SerializeField]
-    private TMP_Text text;
+    private TMP_Text shownText;
+
+    public SetText[] Texts;
+
+    
+
+    private int PageNumber = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         inputManager = InputManager.Instance;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (inputManager.GetPlayerJump())
-        {
-            OnNext();
-        }
+        OnNext();
     }
 
     public void OnNext()
     {
-        text.text = "sdoi jfsoxjflsdkjsdlökjsdlkjsdlkjsdlkjsdlksdjlf";
+        PageNumber ++;
+        foreach(SetText Text in Texts)
+        {
+            if (Text.Page.Equals(PageNumber)) shownText.text = Text.showText;
+        }
+    }
+
+    public void OnBack()
+    {
+        PageNumber--;
+        foreach (SetText Text in Texts)
+        {
+            if (Text.Page.Equals(PageNumber)) shownText.text = Text.showText;
+        }
     }
 }
