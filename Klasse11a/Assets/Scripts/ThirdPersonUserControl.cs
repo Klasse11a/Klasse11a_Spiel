@@ -11,6 +11,7 @@ using UnityEngine;
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
         private InputManager inputManager;        // reference to InputManager to use input
+        AudioManager m_AudioManager;
 
 
         private void Start()
@@ -32,20 +33,36 @@ using UnityEngine;
 
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
+            m_AudioManager = FindObjectOfType<AudioManager>();
         }
 
 
         private void Update()
         {
+            
+
             if (!m_Jump)
             {
                 m_Jump = inputManager.GetPlayerJump();
             }
-        }   
+
+            
+
+            Vector2 move = inputManager.GetPlayerMovement();
+
+            if(move != new Vector2(0, 0))
+            {
+                m_AudioManager.Playe("Walk");
+            }
+            else
+            {
+                m_AudioManager.Pause("Walk");
+            }
+    }
 
 
-        // Fixed update is called in sync with physics
-        private void FixedUpdate()
+    // Fixed update is called in sync with physics
+    private void FixedUpdate()
         {
             // read inputs
             Vector2 move = inputManager.GetPlayerMovement();
