@@ -7,10 +7,23 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
 
+    public static AudioManager _instance;
 
+    public float masterVolume = 1;
     
     void Awake()
     {
+
+        if (_instance == null) _instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
+        DontDestroyOnLoad(this.gameObject);
+
         foreach(Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -20,6 +33,7 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
     }
+
 
     public void Playe(string name)
     {
@@ -45,5 +59,16 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Pause();
+    }
+
+    public void Volume(float volume)
+    {
+        foreach (Sound s in sounds)
+        {
+
+            masterVolume = volume;
+            s.source.volume = volume;
+            
+        }
     }
 }

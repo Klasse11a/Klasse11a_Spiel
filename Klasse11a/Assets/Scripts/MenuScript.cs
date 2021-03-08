@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class MenuScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject menuPanal; // the panal where the menu buttons are attached to
+    [SerializeField]
+    GameObject optionPanal;
+    [SerializeField]
+    Slider VolumeSlider;
 
     private InputManager inputManager;
 
@@ -14,7 +20,10 @@ public class MenuScript : MonoBehaviour
     void Start()
     {
         inputManager = InputManager.Instance;
+        VolumeSlider.value = FindObjectOfType<AudioManager>().masterVolume;
+        optionPanal.SetActive(false);
         menuPanal.SetActive(false);
+        VolumeSlider.onValueChanged.AddListener(delegate { FindObjectOfType<AudioManager>().Volume(VolumeSlider.value); });
     }
 
     // Update is called once per frame
@@ -23,6 +32,7 @@ public class MenuScript : MonoBehaviour
         // if pressed ESC and menuPanal not acitve active Menu gets opend
         if (inputManager.GetOpenMenu() && !menuPanal.activeSelf)
         {
+            
             menuPanal.SetActive(true);
         }
         // if pressed ESC and menuPanal is acitve active Menu gets closed

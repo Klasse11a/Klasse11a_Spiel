@@ -2,11 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame ()
+    [SerializeField]
+    Slider VolumeSlider;
+
+    private void Start()
     {
+        FindObjectOfType<AudioManager>().Playe("MenuMusik");
+        VolumeSlider.value = FindObjectOfType<AudioManager>().masterVolume;
+        VolumeSlider.onValueChanged.AddListener(delegate { FindObjectOfType<AudioManager>().Volume(VolumeSlider.value); });
+    }
+
+
+    public void PlayGame()
+    {
+        FindObjectOfType<AudioManager>().Pause("MenuMusik");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -15,4 +28,6 @@ public class MainMenu : MonoBehaviour
         Debug.Log("QUIT!");
         Application.Quit();
     }
+
+    
 }
