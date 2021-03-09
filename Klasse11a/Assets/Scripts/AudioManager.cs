@@ -4,12 +4,15 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField]
+    AudioMixer audioMixer;
 
     public Sound[] sounds;
 
     public static AudioManager _instance;
 
     public float masterVolume = 1;
+    
     
     void Awake()
     {
@@ -28,6 +31,7 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
+            s.source.outputAudioMixerGroup = s.output;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
@@ -61,14 +65,10 @@ public class AudioManager : MonoBehaviour
         s.source.Pause();
     }
 
-    public void Volume(float volume)
+    public void SetVolume(float volume)
     {
-        foreach (Sound s in sounds)
-        {
-
-            masterVolume = volume;
-            s.source.volume = volume;
-            
-        }
+        masterVolume = volume;
+        Debug.Log(masterVolume);
+        audioMixer.SetFloat("volume", volume);
     }
 }

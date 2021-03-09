@@ -50,7 +50,7 @@ using UnityEngine;
 
             Vector2 move = inputManager.GetPlayerMovement();
 
-            if(move != new Vector2(0, 0))
+            if(move != new Vector2(0, 0) && FindObjectOfType<ThirdPersonCharacter>().m_IsGrounded)
             {
                 m_AudioManager.Playe("Walk");
             }

@@ -23,7 +23,6 @@ public class MenuScript : MonoBehaviour
         VolumeSlider.value = FindObjectOfType<AudioManager>().masterVolume;
         optionPanal.SetActive(false);
         menuPanal.SetActive(false);
-        VolumeSlider.onValueChanged.AddListener(delegate { FindObjectOfType<AudioManager>().Volume(VolumeSlider.value); });
     }
 
     // Update is called once per frame
@@ -40,6 +39,8 @@ public class MenuScript : MonoBehaviour
         {
             menuPanal.SetActive(false);
         }
+
+        Debug.Log(FindObjectOfType<AudioManager>().masterVolume);
         
     }
     // loads Home scene

@@ -43,16 +43,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751ce865d07611e458e1aeeee9e367c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 1546af5bc74d2244a836cb257316f1b7, type: 2}
   sounds:
   - name: Walk
     clip: {fileID: 8300000, guid: 50b89e7b64a2e5749ab92071602f6b7b, type: 3}
+    output: {fileID: 24300002, guid: 1546af5bc74d2244a836cb257316f1b7, type: 2}
     volume: 1
     pitch: 1.47
     loop: 1
     source: {fileID: 0}
   - name: MenuMusik
     clip: {fileID: 8300000, guid: 6422e986941c34746ad913a91e980e84, type: 3}
+    output: {fileID: 24300002, guid: 1546af5bc74d2244a836cb257316f1b7, type: 2}
     volume: 1
     pitch: 0
     loop: 1
     source: {fileID: 0}
+  masterVolume: 1

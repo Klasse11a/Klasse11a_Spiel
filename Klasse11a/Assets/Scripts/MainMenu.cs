@@ -13,7 +13,6 @@ public class MainMenu : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Playe("MenuMusik");
         VolumeSlider.value = FindObjectOfType<AudioManager>().masterVolume;
-        VolumeSlider.onValueChanged.AddListener(delegate { FindObjectOfType<AudioManager>().Volume(VolumeSlider.value); });
     }
 
 
