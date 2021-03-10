@@ -10,8 +10,13 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager _instance;
+    [HideInInspector]
+    public float masterVolume = 0;
+    [HideInInspector]
+    public float dialogeVolume = 0;
+    [HideInInspector]
+    public float SoundeEffectsVolume = 0;
 
-    public float masterVolume = 1;
     
     
     void Awake()
@@ -65,10 +70,21 @@ public class AudioManager : MonoBehaviour
         s.source.Pause();
     }
 
-    public void SetVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
         masterVolume = volume;
-        Debug.Log(masterVolume);
-        audioMixer.SetFloat("volume", volume);
+        audioMixer.SetFloat("masterVolume", volume);
+    }
+
+    public void SetDialogeVolume(float volume)
+    {
+        dialogeVolume = volume;
+        audioMixer.SetFloat("dialogeVolume", volume);
+    }
+
+    public void SetSoundEffectVolume(float volume)
+    {
+        SoundeEffectsVolume = volume;
+        audioMixer.SetFloat("soundEffectsVolume", volume);
     }
 }

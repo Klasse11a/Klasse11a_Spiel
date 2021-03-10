@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: Walk
     clip: {fileID: 8300000, guid: 50b89e7b64a2e5749ab92071602f6b7b, type: 3}
-    output: {fileID: 24300002, guid: 1546af5bc74d2244a836cb257316f1b7, type: 2}
+    output: {fileID: -1523832428312290799, guid: 1546af5bc74d2244a836cb257316f1b7, type: 2}
     volume: 1
     pitch: 1.47
     loop: 1
@@ -56,7 +56,9 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6422e986941c34746ad913a91e980e84, type: 3}
     output: {fileID: 24300002, guid: 1546af5bc74d2244a836cb257316f1b7, type: 2}
     volume: 1
-    pitch: 0
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   masterVolume: 1
+  dialogeVolume: 0
+  SoundeEffectsVolume: 0

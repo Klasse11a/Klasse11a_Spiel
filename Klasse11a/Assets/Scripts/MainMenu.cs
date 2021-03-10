@@ -7,12 +7,18 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    Slider VolumeSlider;
+    Slider masterVolumeSlider;
+    [SerializeField]
+    Slider dialogeVolumeSlider;
+    [SerializeField]
+    Slider soundEffectsVolumeSlider;
 
     private void Start()
     {
         FindObjectOfType<AudioManager>().Playe("MenuMusik");
-        VolumeSlider.value = FindObjectOfType<AudioManager>().masterVolume;
+        masterVolumeSlider.value = FindObjectOfType<AudioManager>().masterVolume;
+        dialogeVolumeSlider.value = FindObjectOfType<AudioManager>().dialogeVolume;
+        soundEffectsVolumeSlider.value = FindObjectOfType<AudioManager>().SoundeEffectsVolume;
     }
 
 

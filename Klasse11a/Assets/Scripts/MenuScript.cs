@@ -12,7 +12,11 @@ public class MenuScript : MonoBehaviour
     [SerializeField]
     GameObject optionPanal;
     [SerializeField]
-    Slider VolumeSlider;
+    Slider masterVolumeSlider;
+    [SerializeField]
+    Slider dialogeVolumeSlider;
+    [SerializeField]
+    Slider soundEffectsVolumeSlider;
 
     private InputManager inputManager;
 
@@ -20,7 +24,9 @@ public class MenuScript : MonoBehaviour
     void Start()
     {
         inputManager = InputManager.Instance;
-        VolumeSlider.value = FindObjectOfType<AudioManager>().masterVolume;
+        masterVolumeSlider.value = FindObjectOfType<AudioManager>().masterVolume;
+        dialogeVolumeSlider.value = FindObjectOfType<AudioManager>().dialogeVolume;
+        soundEffectsVolumeSlider.value = FindObjectOfType<AudioManager>().SoundeEffectsVolume;
         optionPanal.SetActive(false);
         menuPanal.SetActive(false);
     }
