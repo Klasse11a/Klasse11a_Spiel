@@ -2662,7 +2662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SCENEN WAHL
+  m_text: SZENEN WAHL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -16588,11 +16588,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3499172250987590644, guid: e51631eed8e52244b9579f97d554c95d, type: 3}
       propertyPath: sounds.Array.data[1].loop
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499172250987590644, guid: e51631eed8e52244b9579f97d554c95d, type: 3}
+      propertyPath: sounds.Array.data[0].pitch
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3499172250987590644, guid: e51631eed8e52244b9579f97d554c95d, type: 3}
       propertyPath: sounds.Array.data[1].pitch
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499172250987590644, guid: e51631eed8e52244b9579f97d554c95d, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499172250987590644, guid: e51631eed8e52244b9579f97d554c95d, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.652
       objectReference: {fileID: 0}
     - target: {fileID: 3499172250987590645, guid: e51631eed8e52244b9579f97d554c95d, type: 3}
       propertyPath: m_Name
@@ -18601,6 +18613,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1470148553}
+    - target: {fileID: 8114186992725490029, guid: ba416cec1c317d74db64e76bade778ea, type: 3}
+      propertyPath: m_text
+      value: Sound Effekte
+      objectReference: {fileID: 0}
     - target: {fileID: 8114186993741168374, guid: ba416cec1c317d74db64e76bade778ea, type: 3}
       propertyPath: m_Name
       value: Optionen Menu
