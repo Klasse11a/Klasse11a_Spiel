@@ -9,11 +9,16 @@ public class Interacte : MonoBehaviour
     [SerializeField]
     private GameObject interactePanalMobile; // refers to the Mobile panal of the Interaction Canvas
     [SerializeField]
-    private GameObject nextOnMobile; 
+    private GameObject nextOnMobile;
     [SerializeField]
     private GameObject vcam;    // refers to the camera that should be activated
     [SerializeField]
     private GameObject Player; // refers to the player
+    [SerializeField]
+    private bool AudioDialoge = false;
+    [SerializeField]
+    private string DialogeName;
+
 
     private bool interactionPanalIsActive = false;
 
@@ -36,6 +41,12 @@ public class Interacte : MonoBehaviour
         if(interactionPanalIsActive && inputManager.GetPlayerInteracte() && !vcam.activeSelf)
         {
             vcam.SetActive(true);
+
+            if (AudioDialoge) 
+            {
+                FindObjectOfType<AudioManager>().Playe(DialogeName);
+            }
+            
             Player.GetComponent<ThirdPersonUserControl>().enabled = false;
             Player.GetComponent<Animator>().SetFloat("Turn", 0);
             Player.GetComponent<Animator>().SetFloat("Forward", 0);
@@ -44,6 +55,12 @@ public class Interacte : MonoBehaviour
         else if (vcam.activeSelf && inputManager.GetPlayerInteracte())
         {
             vcam.SetActive(false);
+
+            if (AudioDialoge)
+            {
+                FindObjectOfType<AudioManager>().Stop(DialogeName);
+            }
+            
             Player.GetComponent<ThirdPersonUserControl>().enabled = true;
         }
     } 
@@ -53,6 +70,8 @@ public class Interacte : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+            //Interaction with text
+            //
             if (SystemInfo.deviceType.Equals(DeviceType.Handheld))
             {
                 nextOnMobile.SetActive(true);
@@ -64,7 +83,7 @@ public class Interacte : MonoBehaviour
                 interactPanal.SetActive(true);
                 interactionPanalIsActive = true;
             }
-            
+
         }
     }
 
@@ -73,6 +92,8 @@ public class Interacte : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+            //Interaction with text
+            //
             if (SystemInfo.deviceType.Equals(DeviceType.Handheld))
             {
                 nextOnMobile.SetActive(false);

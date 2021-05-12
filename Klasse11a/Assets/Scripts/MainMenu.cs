@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        FindObjectOfType<AudioManager>().Pause("MenuMusik");
+        FindObjectOfType<AudioManager>().Stop("MenuMusik");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
