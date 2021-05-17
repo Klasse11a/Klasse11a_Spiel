@@ -5,10 +5,16 @@ using UnityEngine;
 public class Interacte : MonoBehaviour
 {
     [SerializeField]
+    private bool InteractabelObject = true;
+
+    [ConditionalHide("InteractabelObject", true)]
+    [SerializeField]
     private GameObject interactPanal;  // refers to the desktop panal of the Interaction Canvas
     [SerializeField]
+    [ConditionalHide("InteractabelObject", true)]
     private GameObject interactePanalMobile; // refers to the Mobile panal of the Interaction Canvas
     [SerializeField]
+    [ConditionalHide("InteractabelObject", true)]
     private GameObject nextOnMobile;
     [SerializeField]
     private GameObject vcam;    // refers to the camera that should be activated

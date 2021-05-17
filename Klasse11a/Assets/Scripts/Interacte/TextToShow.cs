@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TextTest : MonoBehaviour
+public class TextToShow : MonoBehaviour
 {
     private InputManager inputManager;
 
